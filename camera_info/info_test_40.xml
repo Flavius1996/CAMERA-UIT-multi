@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<CAMERA_INFO>
+    <!--
+        WARNING: attribute 'name' must be unique for each camera.
+    -->
+    <camera name="test01">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test02">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test03">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test04">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test05">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test06">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test07">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test08">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test09">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test10">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test11">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test12">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test13">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test14">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test15">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test16">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test17">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test18">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test19">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test20">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test21">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test22">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test23">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test24">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test25">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test26">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test27">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test28">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test29">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test30">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test31">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test32">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test33">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test34">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test35">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test36">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test37">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test38">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test39">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+    <camera name="test40">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+</CAMERA_INFO>
