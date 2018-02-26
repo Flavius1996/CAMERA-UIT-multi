@@ -13,7 +13,7 @@ IMAGE_QUALITY: 100
 
 # Dinh dang dat ten file image
 IMAGE_FILENAME_STRINGFORMAT: '"{}_{}_{}__{}".format(camera_name, date, time, count)'
-# Date, time format in filename
+# Date, time format in filename, WARNING: do not use special character
 DATE_FORMAT: '%d%m%Y'
 TIME_FORMAT: '%H-%M-%S'
 

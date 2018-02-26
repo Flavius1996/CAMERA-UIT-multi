@@ -110,6 +110,18 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name, start_datetime, end_da
     ############################# CAPTURING LOOP ############################################## 
     # loop through all frame, only get frame with sampling_rate
     while success:
+        # Check end time
+        if (sched_method == 2):      # CAPTURING METHOD 2
+            cur_dt = datetime.datetime.now()
+            if cur_dt > end_datetime:
+                break 
+        elif (sched_method == 1):    # CAPTURING METHOD 1
+            cur_t = int(datetime.datetime.now().strftime("%H%M"))
+            if cur_t >= end_t:
+                break
+        else:
+            break
+        
         success,image = vidcap.read()
          
         if (count % framestep == 0):
@@ -126,23 +138,11 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name, start_datetime, end_da
             # save frame to file
             cv2.imwrite(imgfilepath, image, [int(cv2.IMWRITE_JPEG_QUALITY), CFG['IMAGE_QUALITY']])
                 
-        # Check end time
-        if (sched_method == 2):      # CAPTURING METHOD 2
-            cur_dt = datetime.datetime.now()
-            if cur_dt > end_datetime:
-                break 
-        elif (sched_method == 1):    # CAPTURING METHOD 1
-            cur_t = int(datetime.datetime.now().strftime("%H%M"))
-            if cur_t >= end_t:
-                break
-        else:
-            break
-            
         count += 1
 
     vidcap.release()
     
-    print("="*20 + " Done Camera: " + camera_name + " - Date: " + date + ' ' + "="*20)
+    print("="*20 + " Done! Camera: " + camera_name + " - Date: " + date + ' ' + "="*20)
     # Writing Log
     log_filename = date + '_' + camera_name + '.txt'
     log_path = CFG['LOGS_PATH'] + log_filename
@@ -177,6 +177,11 @@ def parse_args():
 
     return args
 
+def RUN(link, name, start_datetime, end_datetime):
+    '''Function use for multithread scheduling (METHOD 1)'''
+    thread1 = Thread(target = ExtractFrame_FromCameraLink, args = (link, name, start_datetime, end_datetime, 1))
+    thread1.start()
+            
 def INIT():
     '''Initialize'''
 
@@ -217,10 +222,10 @@ def main():
     print('Date format: {}'.format(CFG['DATE_FORMAT']))
     print('Time format: {}'.format(CFG['TIME_FORMAT']))
 
-    print('Capturing time: {}'.format(CFG['CAPTURING_TIME']))
-    print(CFG)
     if CFG['CAPTURING_TIME'] > 0:
         # CAPTURING METHOD 2: start rightnow, end after X minutes
+        print('Capturing time: {}'.format(CFG['CAPTURING_TIME']))
+
         plus_minute = int(CFG['CAPTURING_TIME'])
         start_datetime = datetime.datetime.now()
         end_datetime = start_datetime + datetime.timedelta(minutes = plus_minute)
@@ -263,17 +268,18 @@ def main():
         print('Waiting to start time ...')
         
         for camera in CAMERA_LIST:
-            schedule.every().day.at(CFG['START_TIME']).do(ExtractFrame_FromCameraLink, camera['link'], camera['name'], start_datetime, end_datetime, 1)
-        
+            schedule.every().day.at(CFG['START_TIME']).do(RUN, camera['link'], camera['name'], start_datetime, end_datetime)
+            
         while True:
+            now = datetime.datetime.now()
+            if now > end_datetime + datetime.timedelta(seconds = 5):
+                print('#'*50)
+                print('#'*50)
+                print('\tEND SCRIPT!!!')
+                exit()
+                
             schedule.run_pending()
             time.sleep(1) # wait 1s
             
-    print('#'*40)
-    print('#'*40)
-    print('!!! END SCRIPT !!!')
-    
-    
-
 if __name__ == '__main__':
     main()
