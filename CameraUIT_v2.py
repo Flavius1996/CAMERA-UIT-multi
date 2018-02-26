@@ -5,10 +5,9 @@
 #   Extract frame from UIT camera stream
 #
 #  Additional Libaries:
-#        python-opencv
+#        opencv-python
 #        schedule - scheduluing tasks - install: pip install schedule
-#        pydrive - google drive lib - install: pip install pydrive
-#
+#        easydict
 #
 #
 # @author: Hoang Huu Tin
@@ -18,7 +17,7 @@
 import cv2
 import os
 import argparse
-import time
+import time, datetime
 from threading import Thread
 
 import schedule        # install by: pip install schedule
@@ -27,12 +26,17 @@ from config import CFG, load_cfg_from_file, format_imagefilename
 from load_camera import CAMERA_LIST, load_camera_from_file
 import sys
 
-def checkCamera(link):
+def checkCamera(link, name):
     '''check to see if capturing camera work'''
     vidcap = cv2.VideoCapture(link)
     success, image = vidcap.read()  
     
-    cv2.imwrite('test.jpg', image)
+    date = time.strftime(CFG.DATE_FORMAT)
+    time_hms = time.strftime(CFG.TIME_FORMAT)
+    name = format_imagefilename(link, name, date, time_hms, 0) 
+    test_img_path = './test_imgs' + name
+
+    cv2.imwrite(test_img_path, image)
 
     print("Camera info: ")
     # Find OpenCV version
@@ -51,7 +55,7 @@ def checkCamera(link):
 
     return success
 
-def ExtractFrame_FromCameraLink(camera_link, camera_name = 'test'):
+def ExtractFrame_FromCameraLink(camera_link, camera_name, start_datetime, end_datetime):
     '''
         Extract keyframes from camera stream with sampling rate (number of frames will be taken per second)
         Example:
@@ -61,6 +65,11 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name = 'test'):
 
     ############################# INIT local folders ############################################## 
     
+    # START TIME TRIGGER
+    now = datetime.datetime.now()
+    if now < start_datetime:
+        return
+
     # Get date info
     date = time.strftime(CFG.DATE_FORMAT)
     start_time = time.strftime("%H:%M:%S")    # Use for log
@@ -74,10 +83,6 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name = 'test'):
     folder_day = date
     if not os.path.exists(camera_name + '/' + folder_day):
         os.mkdir(camera_name + '/' + folder_day)
-    
-    # End time by integer format
-    end_t = int(CFG.end_time.replace(':', ''))
-  
     
     ############################# Calculate framestep ############################################## 
     # opencv video capture
@@ -117,8 +122,8 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name = 'test'):
         if (count % framestep == 0):
             count_kf += 1  
             
-            if (count_kf % 20 == 0) or (count_kf == 1):    
-                print('\t{}: Extracting at time: {}'.format(count_kf, time.strftime("%H:%M:%S")))
+            if (count_kf % 100 == 0) or (count_kf == 1):    
+                print('\t[{}] - frame {}: Extracting at time: {}'.format(camera_name, count_kf, time.strftime("%H:%M:%S")))
             
             time_hms = time.strftime(CFG.TIME_FORMAT)
             imgfilepath = camera_name + "/" + folder_day + "/" 
@@ -126,8 +131,8 @@ def ExtractFrame_FromCameraLink(camera_link, camera_name = 'test'):
             cv2.imwrite(imgfilepath, image, [int(cv2.IMWRITE_JPEG_QUALITY), CFG.IMAGE_QUALITY])
                 
         # Check end time
-        cur_t = int(time.strftime("%H%M"))
-        if cur_t >= end_t:
+        cur_t = datetime.datetime.now()
+        if cur_t > end_datetime:
             break
         
         count += 1
@@ -172,6 +177,18 @@ def parse_args():
 
     return args
 
+def INIT():
+    '''Initialize'''
+
+    if not os.path.exists(CFG.STORE_PATH):
+        os.mkdir(CFG.STORE_PATH)
+
+    if not os.path.exists(CFG.LOGS_PATH):
+        os.mkdir(CFG.LOGS_PATH)
+
+    if not os.path.exists('./test_imgs'):
+        os.mkdir('./test_imgs')
+
 def main():
     
     args = parse_args()
@@ -183,37 +200,55 @@ def main():
     if args.camera_file is not None:
         load_camera_from_file(args.camera_file)
 
+    INIT()
+
     # Print screen
     print("="*20 + 'Capturing frames from UIT CAMERA' + "="*20)
-    print('Camera name: {}'.format(CFG.camera_name))
-    print('Camera link: {}'.format(CFG.camera_link))
-    print('Sampling rate: {} frames/s'.format(CFG.sampling_rate))
-    print('Start time: {}'.format(CFG.start_time))
-    print('End time: {}'.format(CFG.end_time))
-    print('Image quality: {}'.format(CFG.image_quality))
-        
-    print('\nChecking capturing camera...')
-    if checkCamera(args.camera_link):
-        print('Capturing status: OK!')
-        print('Check file test.jpg for testing result.')
-    else:
-        print('Something error!')    # Dummy code, above exception in checkCamera() will print error message instead of this
-        return
-        
-    print('\nCurrent system time is: {}'.format(time.strftime("%H:%M:%S")))
-    print('Waiting to start time ...')
+    print('Store path: {}'.format(CFG.STORE_PATH))
+    print('Logs path: {}'.format(CFG.LOGS_PATH))
+    print('Sampling rate: {} frames/s'.format(CFG.SAMPLING_RATE))
+    print('Image quality: {}'.format(CFG.IMAGE_QUALITY))
+    print('Filename format: {}'.format(CFG.IMAGE_FILENAME_STRINGFORMAT))
+    print('Date format: {}'.format(CFG.DATE_FORMAT))
+    print('Time format: {}'.format(CFG.TIME_FORMAT))
+    print('Start time: {}'.format(CFG.START_TIME))
+    print('End time: {}'.format(CFG.END_TIME))
     
-    # DEBUG
-    #LINK = "rtsp://test:12345@192.168.75.27:554"
-    #camera_name = "Front_MMLAB"
-    #end_t = int(args.end_time.replace(':', ''))
+    
+    print('\nChecking capturing cameras...')
+    for camera in CAMERA_LIST:
+        print('Camera: {}'.format(camera['name']))
+        print('Link: {}'.format(camera['link']))
+        if checkCamera(camera['link'], camera['name']):
+            print('Status: OK!')
+            print()
+        else:
+            # Dummy code, above exception in checkCamera() will print error message instead of this
+            print('Something error!')    
+            return
+    print('Check test images in ./test_imgs folder.')
 
-    schedule.every().day.at(CFG.start_time).do(ExtractFrame_FromCameraLink, args.camera_link, 
-                          args.camera_name)
-    
-    while True:
-        schedule.run_pending()
-        time.sleep(1) # wait 1s
+    if CFG.CAPTURING_TIME != 0:
+        # CAPTURING METHOD 2: start rightnow, end after X minutes
+        plus_minute = int(CFG.CAPTURING_TIME)
+        start_datetime = datetime.datetime.now()
+        end_datetime = start_datetime + datetime.timedelta(minutes = plus_minute)
+
+        for camera in CAMERA_LIST:
+            thread1 = Thread(target = ExtractFrame_FromCameraLink, args = (camera['link'], camera['name'], start_datetime, end_datetime))
+            thread1.start()
+
+    else:
+        # CAPTURING METHOD 1: scheduling task
+        print('\nCurrent system time is: {}'.format(time.strftime("%H:%M:%S")))
+        print('Waiting to start time ...')
+        
+        schedule.every().day.at(CFG.start_time).do(ExtractFrame_FromCameraLink, args.camera_link, 
+                              args.camera_name)
+        
+        while True:
+            schedule.run_pending()
+            time.sleep(1) # wait 1s
     
 
 if __name__ == '__main__':
