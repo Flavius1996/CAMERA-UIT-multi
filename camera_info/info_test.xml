@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<CAMERA_INFO>
+    <!--
+        WARNING: attribute 'name' must be unique for each camera.
+    -->
+
+    <camera name="test01">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+
+    <camera name="test02">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+
+    <camera name="test03">
+        <link>rtsp://test:12345@192.168.75.27:554</link>
+    </camera>
+
+</CAMERA_INFO>
