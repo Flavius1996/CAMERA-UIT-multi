@@ -84,7 +84,9 @@ WARNING: Không dùng kí tự đặc biệt để lưu tên file. Mặc định
 #### CÁCH 2: Bắt đầu capture ngay lập tức và kết thúc sau khoảng thời gian bao nhiêu phút.
 **CAPTURING_TIME**: Khoảng thời gian capturing tính theo ***phút***.
 
-Để chọn chạy theo cách 1, thì set CAPTURING_TIME bằng 0.
+Để chọn chạy theo cách 1, thì set CAPTURING_TIME bằng 0, ngược lại nếu nó có giá trị thì script sẽ chọn chạy theo cách 2. 
+
+Khi lựa chọn cách 1 sẽ có thêm một quá trình check các camera để đảm bảo các camera hoạt động tốt, kết thúc quá trình check này các ảnh test thử sẽ được lưu ở thư mục ./test_imgs, lưu ý kiểm tra các ảnh ở thư mục này xem đã ổn chưa, để khỏi phải đợi đến lúc chạy thực tế thì bị lỗi.
 
 ## Cấu trúc file xml lưu thông tin camera
 Thao khảo tại [./camera_info/info_test.xml](https://github.com/Flavius1996/CAMERA-UIT-multi/blob/master/camera_info/info_test.xml)
