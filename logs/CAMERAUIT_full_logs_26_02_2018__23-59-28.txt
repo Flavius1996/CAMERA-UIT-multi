@@ -1,0 +1,148 @@
+Logging output to ./logs/CAMERAUIT_full_logs_26_02_2018__23-59-28.txt
+Called with args:
+Namespace(camera_file='./camera_info/info_test.xml', cfg_file='./cfgs/cfg_test.yml')
+====================Capturing frames from UIT CAMERA====================
+Store path: /home/tinhh/CAMERA_UIT_STORE/
+Logs path: ./logs/
+Sampling rate: 5.0 frames/s
+Image quality: 100
+Filename format: "{}_{}_{}__{}".format(camera_name, date, time, count)
+Date format: %d%m%Y
+Time format: %H-%M-%S
+Capturing time: 0
+{'DATE_FORMAT': '%d%m%Y', 'CAPTURING_TIME': 0, 'END_DATE': '01/03/2018', 'STORE_PATH': '/home/tinhh/CAMERA_UIT_STORE/', 'START_TIME': '07:25', 'START_DATE': '27/02/2018', 'TIME_FORMAT': '%H-%M-%S', 'END_TIME': '07:35', 'LOGS_PATH': './logs/', 'SAMPLING_RATE': 5.0, 'IMAGE_QUALITY': 100, 'IMAGE_FILENAME_STRINGFORMAT': '"{}_{}_{}__{}".format(camera_name, date, time, count)'}
+Start date: 27/02/2018
+End date: 01/03/2018
+Start time: 07:25
+End time: 07:35
+
+Checking capturing cameras...
+Camera: test01
+Link: rtsp://test:12345@192.168.75.27:554
+	Camera info: 
+		Camera's fps: 15
+		Camera's width = 1280
+		Camera's height = 720
+	Captured test image: ./test_imgs/test01_26022018_23-59-30__0.jpg
+	Status: OK!
+
+Camera: test02
+Link: rtsp://test:12345@192.168.75.27:554
+	Camera info: 
+		Camera's fps: 15
+		Camera's width = 1280
+		Camera's height = 720
+	Captured test image: ./test_imgs/test02_26022018_23-59-32__0.jpg
+	Status: OK!
+
+Camera: test03
+Link: rtsp://test:12345@192.168.75.27:554
+	Camera info: 
+		Camera's fps: 15
+		Camera's width = 1280
+		Camera's height = 720
+	Captured test image: ./test_imgs/test03_26022018_23-59-34__0.jpg
+	Status: OK!
+
+
+Current system datetime is: 26/02/2018 23:59:34
+Waiting to start time ...
+[test01] - frame 1: Extracting at time: 07-25-02
+[test03] - frame 1: Extracting at time: 07-25-04
+[test02] - frame 1: Extracting at time: 07-25-06
+[test01] - frame 100: Extracting at time: 07-25-21
+[test03] - frame 100: Extracting at time: 07-25-23
+[test02] - frame 100: Extracting at time: 07-25-25
+[test01] - frame 200: Extracting at time: 07-25-41
+[test03] - frame 200: Extracting at time: 07-25-43
+[test02] - frame 200: Extracting at time: 07-25-45
+[test01] - frame 300: Extracting at time: 07-26-01
+[test03] - frame 300: Extracting at time: 07-26-03
+[test02] - frame 300: Extracting at time: 07-26-05
+[test01] - frame 400: Extracting at time: 07-26-21
+[test03] - frame 400: Extracting at time: 07-26-23
+[test02] - frame 400: Extracting at time: 07-26-25
+[test01] - frame 500: Extracting at time: 07-26-41
+[test03] - frame 500: Extracting at time: 07-26-43
+[test02] - frame 500: Extracting at time: 07-26-44
+[test01] - frame 600: Extracting at time: 07-26-58
+[test03] - frame 600: Extracting at time: 07-27-00
+[test02] - frame 600: Extracting at time: 07-27-02
+[test01] - frame 700: Extracting at time: 07-27-18
+[test03] - frame 700: Extracting at time: 07-27-20
+[test02] - frame 700: Extracting at time: 07-27-22
+[test01] - frame 800: Extracting at time: 07-27-38
+[test03] - frame 800: Extracting at time: 07-27-40
+[test02] - frame 800: Extracting at time: 07-27-42
+[test01] - frame 900: Extracting at time: 07-27-58
+[test03] - frame 900: Extracting at time: 07-28-00
+[test02] - frame 900: Extracting at time: 07-28-02
+[test01] - frame 1000: Extracting at time: 07-28-18
+[test03] - frame 1000: Extracting at time: 07-28-19
+[test02] - frame 1000: Extracting at time: 07-28-20
+[test01] - frame 1100: Extracting at time: 07-28-30
+[test03] - frame 1100: Extracting at time: 07-28-31
+[test02] - frame 1100: Extracting at time: 07-28-32
+[test01] - frame 1200: Extracting at time: 07-28-42
+[test03] - frame 1200: Extracting at time: 07-28-43
+[test02] - frame 1200: Extracting at time: 07-28-44
+[test01] - frame 1300: Extracting at time: 07-28-55
+[test03] - frame 1300: Extracting at time: 07-28-57
+[test02] - frame 1300: Extracting at time: 07-28-58
+[test01] - frame 1400: Extracting at time: 07-29-14
+[test03] - frame 1400: Extracting at time: 07-29-16
+[test02] - frame 1400: Extracting at time: 07-29-18
+[test01] - frame 1500: Extracting at time: 07-29-34
+[test03] - frame 1500: Extracting at time: 07-29-36
+[test02] - frame 1500: Extracting at time: 07-29-38
+[test01] - frame 1600: Extracting at time: 07-29-54
+[test03] - frame 1600: Extracting at time: 07-29-56
+[test02] - frame 1600: Extracting at time: 07-29-58
+[test01] - frame 1700: Extracting at time: 07-30-14
+[test03] - frame 1700: Extracting at time: 07-30-16
+[test02] - frame 1700: Extracting at time: 07-30-18
+[test01] - frame 1800: Extracting at time: 07-30-34
+[test03] - frame 1800: Extracting at time: 07-30-36
+[test02] - frame 1800: Extracting at time: 07-30-38
+[test01] - frame 1900: Extracting at time: 07-30-54
+[test03] - frame 1900: Extracting at time: 07-30-56
+[test02] - frame 1900: Extracting at time: 07-30-58
+[test01] - frame 2000: Extracting at time: 07-31-14
+[test03] - frame 2000: Extracting at time: 07-31-16
+[test02] - frame 2000: Extracting at time: 07-31-18
+[test01] - frame 2100: Extracting at time: 07-31-34
+[test03] - frame 2100: Extracting at time: 07-31-36
+[test02] - frame 2100: Extracting at time: 07-31-38
+[test01] - frame 2200: Extracting at time: 07-31-54
+[test03] - frame 2200: Extracting at time: 07-31-56
+[test02] - frame 2200: Extracting at time: 07-31-58
+[test01] - frame 2300: Extracting at time: 07-32-14
+[test03] - frame 2300: Extracting at time: 07-32-16
+[test02] - frame 2300: Extracting at time: 07-32-18
+[test01] - frame 2400: Extracting at time: 07-32-34
+[test03] - frame 2400: Extracting at time: 07-32-36
+[test02] - frame 2400: Extracting at time: 07-32-38
+[test01] - frame 2500: Extracting at time: 07-32-54
+[test03] - frame 2500: Extracting at time: 07-32-56
+[test02] - frame 2500: Extracting at time: 07-32-58
+[test01] - frame 2600: Extracting at time: 07-33-14
+[test03] - frame 2600: Extracting at time: 07-33-16
+[test02] - frame 2600: Extracting at time: 07-33-18
+[test01] - frame 2700: Extracting at time: 07-33-34
+[test03] - frame 2700: Extracting at time: 07-33-36
+[test02] - frame 2700: Extracting at time: 07-33-38
+[test01] - frame 2800: Extracting at time: 07-33-54
+[test03] - frame 2800: Extracting at time: 07-33-56
+[test02] - frame 2800: Extracting at time: 07-33-58
+[test01] - frame 2900: Extracting at time: 07-34-14
+[test03] - frame 2900: Extracting at time: 07-34-16
+[test02] - frame 2900: Extracting at time: 07-34-18
+[test01] - frame 3000: Extracting at time: 07-34-34
+[test03] - frame 3000: Extracting at time: 07-34-36
+[test02] - frame 3000: Extracting at time: 07-34-38
+[test01] - frame 3100: Extracting at time: 07-34-54
+[test03] - frame 3100: Extracting at time: 07-34-56
+[test02] - frame 3100: Extracting at time: 07-34-58
+==================== Done! Camera: test03 - Date: 27022018 ====================
+==================== Done! Camera: test01 - Date: 27022018 ====================
+==================== Done! Camera: test02 - Date: 27022018 ====================

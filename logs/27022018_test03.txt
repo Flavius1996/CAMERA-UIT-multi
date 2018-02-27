@@ -1,0 +1,9 @@
+Date: 27022018
+Camera name: test03
+Camera link: rtsp://test:12345@192.168.75.27:554
+Sampling rate: 5.0 frames/s
+Start time: 07:25:00
+End time: 07:35:00
+Image quality: 100
+
+Total captured frames = 3115
