@@ -38,7 +38,7 @@ git clone https://github.com/Flavius1996/CAMERA-UIT-multi.git
     cd CAMERA-UIT-multi
     ./CameraUIT_log.sh <config_path> <camera_info_path>
     ```
-   Với cách 2, các file txt thống kê cho từng ngày (giống cách 1) + logs toàn bộ những gì print ra màn hình của python thành 1 file ./logs/CAMERAUIT_full_logs_<date>__<time>.txt
+   Với cách 2, lưu các file txt thống kê cho từng ngày (giống cách 1) + logs toàn bộ những gì print ra màn hình của python thành 1 file ./logs/CAMERAUIT_full_logs_date__time.txt
   
 ## Các option trong file config
 
@@ -84,6 +84,7 @@ WARNING: Không dùng kí tự đặc biệt để lưu tên file. Mặc định
 #### CÁCH 2: Bắt đầu capture ngay lập tức và kết thúc sau khoảng thời gian bao nhiêu phút.
 **CAPTURING_TIME**: Khoảng thời gian capturing tính theo ***phút***.
 
+Để chọn chạy theo cách 1, thì set CAPTURING_TIME bằng 0.
 
 ## Cấu trúc file xml lưu thông tin camera
 Thao khảo tại [./camera_info/info_test.xml](https://github.com/Flavius1996/CAMERA-UIT-multi/blob/master/camera_info/info_test.xml)
