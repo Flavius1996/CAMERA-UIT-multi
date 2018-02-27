@@ -222,10 +222,11 @@ def main():
     print('Date format: {}'.format(CFG['DATE_FORMAT']))
     print('Time format: {}'.format(CFG['TIME_FORMAT']))
 
+    
     if CFG['CAPTURING_TIME'] > 0:
         # CAPTURING METHOD 2: start rightnow, end after X minutes
         print('Capturing time: {}'.format(CFG['CAPTURING_TIME']))
-
+        
         plus_minute = int(CFG['CAPTURING_TIME'])
         start_datetime = datetime.datetime.now()
         end_datetime = start_datetime + datetime.timedelta(minutes = plus_minute)
@@ -270,9 +271,11 @@ def main():
         for camera in CAMERA_LIST:
             schedule.every().day.at(CFG['START_TIME']).do(RUN, camera['link'], camera['name'], start_datetime, end_datetime)
             
+        end_script_dt = end_datetime + datetime.timedelta(seconds = 5)
+        
         while True:
             now = datetime.datetime.now()
-            if now > end_datetime + datetime.timedelta(seconds = 5):
+            if now > end_script_dt:
                 print('#'*50)
                 print('#'*50)
                 print('\tEND SCRIPT!!!')
